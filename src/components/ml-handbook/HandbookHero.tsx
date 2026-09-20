@@ -127,6 +127,7 @@ export function HandbookHero({
             { id: 'finetuning', label: '৫. LoRA, EWC ও Hard Requirements' },
             { id: 'production', label: '৬. AWS, ডকার ও $5k Upwork গাইড' },
             { id: 'mentor', label: '৭. লাইভ বাংলা এআই টিউটর ল্যাব' },
+            { id: 'mlxmac', label: '৮. Mac M1 এ mlx-lm ও জুপিটার ল্যাব' },
           ].map((tab) => (
             <button
               key={tab.id}

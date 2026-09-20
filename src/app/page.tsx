@@ -11,6 +11,7 @@ import { ModuleDeepLearning } from '@/components/ml-handbook/ModuleDeepLearning'
 import { ModuleLLMFineTuning } from '@/components/ml-handbook/ModuleLLMFineTuning';
 import { ModuleProductionMLOps } from '@/components/ml-handbook/ModuleProductionMLOps';
 import { ModuleLiveMentor } from '@/components/ml-handbook/ModuleLiveMentor';
+import { ModuleMlxMacLab } from '@/components/ml-handbook/ModuleMlxMacLab';
 
 export default function HomePage() {
   const [mode, setMode] = useState<'wife' | 'architect'>('wife');
@@ -52,6 +53,7 @@ export default function HomePage() {
           {activeTab === 'finetuning' && <ModuleLLMFineTuning mode={mode} />}
           {activeTab === 'production' && <ModuleProductionMLOps mode={mode} />}
           {activeTab === 'mentor' && <ModuleLiveMentor initialMode={mode} />}
+          {activeTab === 'mlxmac' && <ModuleMlxMacLab mode={mode} />}
         </div>
       </main>
 

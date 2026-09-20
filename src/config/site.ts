@@ -55,6 +55,7 @@ export const siteConfig: SiteConfig = {
     { id: 'finetuning', label: '৫. LoRA ও ফাইন-টিউনিং' },
     { id: 'production', label: '৬. AWS ও MLOps' },
     { id: 'mentor', label: '৭. লাইভ AI মেন্টর' },
+    { id: 'mlxmac', label: '৮. Mac M1 এ mlx-lm ল্যাব' },
   ],
   metrics: [
     {
