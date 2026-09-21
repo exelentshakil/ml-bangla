@@ -4,10 +4,11 @@ import React, { useState } from 'react';
 import {
   Sparkles,
   Database,
-  Cpu,
-  Layers,
+  Calculator,
+  Brain,
+  FileText,
   Laptop,
-  Terminal,
+  CheckSquare,
   Server,
   ShieldCheck,
   CheckCircle2,
@@ -16,7 +17,8 @@ import {
   Check,
   Trophy,
   ArrowRight,
-  Flame,
+  DollarSign,
+  TrendingUp,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -29,115 +31,126 @@ export function ModuleCookbook8Stages({ mode }: { mode: 'wife' | 'architect' }) 
   const stages = [
     {
       stageNum: 1,
-      name: 'Raw Metal: ডেটা প্রিপারেশন',
+      name: 'কাঁচামাল বাছাই ও গোছানো',
+      englishTitle: 'Data Scrubbing & Structuring',
       tools: 'Pandas, Tokenizer, Vectors',
-      summary: 'ভাঙাচোরা ডাটা ধুয়েমুছে সংখ্যায় রূপান্তর ও ট্রেন ডট জেএসএনএল তৈরি।',
+      summary: 'ভাঙাচোরা, অগোছালো ডেটা ধুয়েমুছে ক্লিন এক্সেল বা train.jsonl ফাইলে সাজানো যাতে ভুল তথ্যে কাজ না হয়।',
       icon: Database,
       color: '#533AFD',
-      code: `# ১. কাঁচা ডেটা প্রিপারেশন
+      code: `# ১. কাঁচামাল ক্লিনিং ও গোছানো
 import pandas as pd
-df = pd.read_csv('raw_client_data.csv')
+df = pd.read_csv('raw_client_leads.csv')
+# ডুপ্লিকেট ও খালি ঘর বাদ দেওয়া
 df = df.dropna().drop_duplicates()
-# JSONL ফরম্যাটে এক্সপোর্ট
+# এআই পড়ার মতো সাজানো ফাইলে সেভ
 df.to_json('train.jsonl', orient='records', lines=True)`,
-      takeaway: 'কাঁচা ডেটা পরিষ্কার না থাকলে মডেল ভুলভাল আবর্জনা শিখবে।',
+      takeaway: 'কাঁচামাল পরিষ্কার না হলে পুরো ব্যবসার আউটপুট ভুল হবে (Garbage in, garbage out)।',
     },
     {
       stageNum: 2,
-      name: 'Chassis: ক্লাসিক্যাল ML',
+      name: 'সুপারফাস্ট হিসাবরক্ষক',
+      englishTitle: 'Fast Tabular Scoring',
       tools: 'XGBoost, Random Forest',
-      summary: 'ট্যাবুলার ব্যাংক ফ্রড ও ক্রেডিট রিস্ক ক্যালকুলেশনে ০.১ms আল্ট্রাফাস্ট প্রেডিকশন।',
-      icon: Cpu,
+      summary: 'ব্যাংক ফ্রড, লোন রিস্ক বা সেলস স্কোরিংয়ে ০.১ms আল্ট্রাফাস্ট হিসাব। কোনো টোকেন বিল ছাড়াই মুহূর্তে সিদ্ধান্ত।',
+      icon: Calculator,
       color: '#057A55',
-      code: `# ২. আল্ট্রা-ফাস্ট XGBoost
+      code: `# ২. আল্ট্রা-ফাস্ট বিজনেস ডিসিশন ইঞ্জিন
 import xgboost as xgb
 model = xgb.XGBClassifier(n_estimators=200, max_depth=4)
 model.fit(X_train, y_train)
-# ০.১ মিলিসেকেন্ডে জিরো কস্ট প্রেডিকশন!
-pred = model.predict(X_test)`,
-      takeaway: 'টেবিল ডেটায় এলএলএম চালানো বোকামি। এখানে XGBoost চ্যাম্পিয়ন।',
+# ০.১ মিলিসেকেন্ডে সিদ্ধান্ত, এপিআই বিল ০ টাকা!
+fraud_risk = model.predict(X_test)`,
+      takeaway: 'টেবিল ডেটায় দামি এলএলএম চালানো বোকামি। এখানে এক্সজিবুস্টই সবচেয়ে সস্তা ও দ্রুত চ্যাম্পিয়ন।',
     },
     {
       stageNum: 3,
-      name: 'Twin Turbos: ডিপ লার্নিং',
+      name: 'অভিজ্ঞ ম্যানেজার ব্রেইন',
+      englishTitle: 'Deep Pattern Recognition',
       tools: 'PyTorch, Attention, Weights',
-      summary: 'শব্দ বা ইমেজের ভেতরের গভীর সম্পর্ক খুঁজে বের করা ও লস জিরো করা।',
-      icon: Flame,
+      summary: 'কাস্টমারের দীর্ঘ মেসেজ বা জটিল ডকুমেন্টের পেছনের আসল মানে ও উদ্দেশ্য মানুষের মতো নিখুঁতভাবে ধরা।',
+      icon: Brain,
       color: '#FF5E3A',
-      code: `# ৩. পাইটর্চ অ্যাটেনশন মেকানিক্স
+      code: `# ৩. কনটেক্সট বোঝার অ্যাটেনশন ইঞ্জিন
 import torch
 import torch.nn.functional as F
-# Attention(Q, K, V) = softmax(QK^T / sqrt(d)) * V
+# কাস্টমারের বাক্যের প্রতিটা শব্দের আসল গুরুত্ব মাপা
 scores = torch.matmul(Q, K.transpose(-2, -1)) / (64 ** 0.5)
-attention_weights = F.softmax(scores, dim=-1)`,
-      takeaway: 'অ্যাটেনশন মেকানিজম শব্দের পেছনের আসল কনটেক্সট চিনে নেয়।',
+word_importance = F.softmax(scores, dim=-1)`,
+      takeaway: 'শব্দের আসল অর্থ বুঝতে পারে, যেমন ব্যাংক মানে নদীর পাড় নাকি টাকার প্রতিষ্ঠান তা কনটেক্সট দেখে চেনে।',
     },
     {
       stageNum: 4,
-      name: 'Widebody: LoRA & PEFT',
+      name: 'কোম্পানির সিক্রেট রুলবুক',
+      englishTitle: 'Private Custom Rules (LoRA)',
       tools: 'Quantization, 4-bit, Safetensors',
-      summary: 'পুরো মডেল রি-রাইট না করে মাত্র ০.১% প্যারামিটারে ব্র্যান্ড নলেজ বসানো।',
-      icon: Layers,
+      summary: 'পুরো এআই নতুন করে না বানিয়ে কোম্পানির নিজস্ব ৫ পাতার প্রাইভেট নিয়ম জুড়ে দেওয়া। খরচ ৯৯.৯% সাশ্রয়।',
+      icon: FileText,
       color: '#E03177',
-      code: `# ৪. LoRA কনফিগারেশন (০.১% প্যারামিটার)
+      code: `# ৪. কোম্পানির নিজস্ব রুলবুক অ্যাডাপ্টার
 from peft import LoraConfig, get_peft_model
+# মাত্র ০.১% প্যারামিটারে কোম্পানির নিজস্ব পলিসি বসানো
 config = LoraConfig(r=16, lora_alpha=32, target_modules=["q_proj", "v_proj"])
 model = get_peft_model(base_model, config)`,
-      takeaway: 'পুরো মডেল ট্রেইন না করে স্টিকি নোটের মতো ছোট অ্যাডাপ্টার বসানো।',
+      takeaway: 'বই না পুড়িয়ে পেছনের স্টিকি নোটে নতুন রেসিপি জুড়ে নেওয়ার মতো সহজ ও সাশ্রয়ী।',
     },
     {
       stageNum: 5,
-      name: 'The Workshop: Apple MLX',
+      name: 'জিরো-কস্ট অফিস ডেস্ক',
+      englishTitle: 'Local Prototype Lab',
       tools: 'mlx-lm on Mac M1',
-      summary: 'জিরো ক্লাউড খরচে ম্যাকের ইউনিফাইড মেমোরিতে ২০ মিনিটে কাস্টম ট্রেনিং।',
+      summary: 'বাইরের কোনো ক্লাউড ভাড়া ছাড়া নিজের ম্যাকবুকের মেমোরিতে ২০ মিনিটে মডেল ট্রেইন ও রেডি করা।',
       icon: Laptop,
       color: '#7A68FF',
-      code: `# ৫. ম্যাকবুকে জিরো ডলার ফাইন-টিউনিং
+      code: `# ৫. ম্যাকবুকে জিরো খরচে ফাইন-টিউনিং
 mlx_lm.lora \\
   --model mlx-community/Meta-Llama-3-8B-Instruct-4bit \\
-  --train --data ./my_data --iters 600 --batch-size 4`,
-      takeaway: 'ম্যাকবুকের ১৬জিবি মেমোরিতেই ক্লায়েন্ট ডেমো শতভাগ রেডি।',
+  --train --data ./company_data --iters 600 --batch-size 4`,
+      takeaway: 'ক্লায়েন্টকে ডেমো দেখানোর জন্য ক্লাউডে ১ টাকাও খরচ করার দরকার নেই।',
     },
     {
       stageNum: 6,
-      name: 'Dyno Run: জুপিটার সার্জারি',
+      name: 'কোয়ালিটি অডিট ও চেক',
+      englishTitle: 'Quality Control & Inspection',
       tools: 'Jupyter Lab, Tensors, Logits',
-      summary: 'নোটবুকে ৪ লাইনে মডেলের পেটের ভেতরের টোকেন আইডি ও এমবেডিং দেখা।',
-      icon: Terminal,
+      summary: 'ক্লায়েন্টকে দেখানোর আগে নোটবুকে ৪ লাইনের কোডে নিজের চোখে সব হিসাব ও আউটপুট ঠিক আছে কি না পরখ করা।',
+      icon: CheckSquare,
       color: '#00D4FF',
-      code: `# ৬. জুপিটার লাইভ ইন্সপেকশন
+      code: `# ৬. আউটপুট অডিট ও ভেরিফিকেশন
 from mlx_lm import load, generate
 model, tokenizer = load("mlx-community/Meta-Llama-3-8B-Instruct-4bit")
-tokens = tokenizer.encode("Hello Shakil")
-print("Token IDs:", tokens)`,
-      takeaway: 'পেটের ভেতর টোকেন ও লস দেখতে পারলে এআই আর কোনো জাদুকরী অন্ধকার বিষয় থাকে না।',
+test_reply = generate(model, tokenizer, prompt="Company refund rules:")
+print(test_reply)`,
+      takeaway: 'পেটের ভেতর টোকেন আর আউটপুট দেখে ডেলিভারি দিলে কাজে কোনো খুঁত থাকে না।',
     },
     {
       stageNum: 7,
-      name: 'Track Test: Production MLOps',
+      name: '২৪/৭ লাইভ ডেলিভারি সেন্টার',
+      englishTitle: 'Production Cloud Serving',
       tools: 'Docker, AWS G5, vLLM Server',
-      summary: 'PagedAttention দিয়ে ক্লায়েন্টের প্রাইভেট ক্লাউডে ২৪/৭ হাই-স্পিড সার্ভিং।',
+      summary: 'ক্লায়েন্টের নিজস্ব প্রাইভেট ক্লাউডে ২৪/৭ লাইভ সার্ভার চালানো যাতে কোম্পানির ৫০ জন একসাথে কাজ করতে পারে।',
       icon: Server,
       color: '#057A55',
-      code: `# ৭. ডকার ও vLLM সার্ভিং
+      code: `# ৭. ক্লায়েন্টের নিজস্ব প্রাইভেট সার্ভিং
 docker run --gpus all -p 8000:8000 vllm/vllm-openai:latest \\
   --model meta-llama/Meta-Llama-3-8B-Instruct \\
   --enable-lora --lora-modules client-data=/models/adapters`,
-      takeaway: 'একসাথে ৫০ জন ইউজার কল করলেও সেকেন্ডে ৯০+ টোকেনে রেসপন্স দেবে।',
+      takeaway: 'একসাথে বহু গ্রাহক আসলেও সিস্টেম কখনো হ্যাং বা ক্র্যাশ করবে না।',
     },
     {
       stageNum: 8,
-      name: 'The Armor: NIST AI Governance',
+      name: 'সিকিউরিটি গার্ড ও লিগ্যাল শিল্ড',
+      englishTitle: 'Security Guard & PII Firewall',
       tools: 'OWASP LLM01, PII Firewall',
-      summary: 'প্রম্পট ইনজেকশন ইন্টারসেপ্ট করে ক্লায়েন্টের ১০০% সিকিউরিটি নিশ্চিত করা।',
+      summary: 'হ্যাকিং ও গোপন ফাইল চুরি ঠেকিয়ে কোম্পানির ডেটা ১০০% নিরাপদ রাখা যাতে কোনো আইনি ঝামেলা না হয়।',
       icon: ShieldCheck,
       color: '#D97706',
-      code: `# ৮. ইনলাইন সিকিউরিটি ফায়ারওয়াল
-def inspect_prompt(prompt: str):
-    if re.search(r'(ignore previous instructions|system prompt)', prompt, re.I):
-        return {"blocked": True, "reason": "OWASP LLM01 Injection"}
-    return {"blocked": False, "sanitized": redact_pii(prompt)}`,
-      takeaway: 'এন্টারপ্রাইজ ক্লায়েন্টরা সিকিউরিটি ফায়ারওয়াল দেখেই $৫,০০০ চেক সাইন করে।',
+      code: `# ৮. ইনলাইন সিকিউরিটি ফিল্টার
+def check_security(user_query: str):
+    # প্রম্পট ইনজেকশন বা হ্যাকিং ব্লক করা
+    if "ignore all rules" in user_query.lower():
+        return {"allow": False, "msg": "Blocked by Security Shield"}
+    return {"allow": True, "clean_query": mask_sensitive_pii(user_query)}`,
+      takeaway: 'বড় বড় এন্টারপ্রাইজ কোম্পানি এই সিকিউরিটি শিল্ড দেখেই নিশ্চিন্তে $৫,০০০ দেয়।',
     },
   ];
 
@@ -155,13 +168,13 @@ def inspect_prompt(prompt: str):
           <Badge className="bg-[#533AFD]/10 text-[#533AFD] border-[#533AFD]/20 text-xs font-mono">
             ১০০% কমপ্লিট কুকবুক
           </Badge>
-          <span className="text-xs font-mono text-[var(--color-text-secondary)]">৮টি পূর্ণাঙ্গ স্টেজ</span>
+          <span className="text-xs font-mono text-[var(--color-text-secondary)]">৮টি পূর্ণাঙ্গ বিজনেস স্টেজ</span>
         </div>
         <h2 className="text-xl sm:text-2xl font-bold text-[var(--color-text-primary)]">
           মেশিন লার্নিংয়ের সম্পূর্ণ ৮টি স্টেজ: বিগিনার থেকে মাস্টার আর্টিস্ট
         </h2>
         <p className="text-xs sm:text-sm text-[var(--color-text-secondary)]">
-          এই ৮টি ধাপের বাইরে মেশিন লার্নিংয়ে জানার মতো আর কিছুই নেই। প্রতিটি ধাপ তোমার হাতের তালুর মতো স্পষ্ট।
+          এই ৮টি ধাপের বাইরে মেশিন লার্নিংয়ে জানার মতো আর কিছুই নেই। কোনো গাড়ির মেটাফর নয়, একদম খাঁটি বিজনেস প্রবলেম সলভিংয়ের আলোতে তোমার হাতের তালুর মতো পরিষ্কার।
         </p>
       </div>
 
@@ -208,7 +221,7 @@ def inspect_prompt(prompt: str):
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[var(--color-border)] pb-3">
             <div>
               <div className="text-xs font-mono text-[var(--color-text-muted)]">
-                নির্বাচিত স্টেজ {stages[activeStage].stageNum}
+                নির্বাচিত স্টেজ {stages[activeStage].stageNum}: {stages[activeStage].englishTitle}
               </div>
               <h3 className="text-base sm:text-lg font-bold text-[var(--color-text-primary)]">
                 {stages[activeStage].name} ({stages[activeStage].tools})
@@ -239,7 +252,7 @@ def inspect_prompt(prompt: str):
           </pre>
 
           <div className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-800 dark:text-emerald-300 font-medium">
-            💡 <strong>কোর বিজনেস টেকঅ্যাওয়ে:</strong> {stages[activeStage].takeaway}
+            💡 <strong>কোর বিজনেস লাভ:</strong> {stages[activeStage].takeaway}
           </div>
         </CardContent>
       </Card>
@@ -248,10 +261,10 @@ def inspect_prompt(prompt: str):
       <div className="p-5 rounded-2xl border border-amber-500/30 bg-amber-50/20 dark:bg-amber-950/20 space-y-2">
         <div className="flex items-center gap-2 text-amber-800 dark:text-amber-300 font-bold text-sm">
           <Trophy className="h-5 w-5 text-amber-600" />
-          <span>উপসংহার: পুরো মেশিন লার্নিং এখন তোমার নখদর্পণে</span>
+          <span>🏆 উপসংহার: এই পুরো আর্কিটেকচার এখন তোমার নখদর্পণে</span>
         </div>
         <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed">
-          ক্লায়েন্ট যে কাজই নিয়ে আসুক না কেন, তুমি জানো কোন চ্যাসিস নিতে হবে, কোথায় কাটতে হবে, আর কীভাবে আকিরা নাকাইয়ের মতো শান্ত মাথায় বিশ্বমানের এন্টারপ্রাইজ এআই মাস্টারপিস ডেলিভার করতে হবে!
+          ক্লায়েন্ট যে কাজই নিয়ে আসুক না কেন, তুমি জানো কোথায় ডেটা গোছাতে হবে, কোন টুল দিয়ে খরচ বাঁচাতে হবে, আর কীভাবে আকিরা নাকাইয়ের মতো শান্ত মাথায় বিশ্বমানের এন্টারপ্রাইজ এআই মাস্টারপিস ডেলিভার করতে হবে!
         </p>
       </div>
     </div>
