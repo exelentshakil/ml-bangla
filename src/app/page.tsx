@@ -12,6 +12,7 @@ import { ModuleLLMFineTuning } from '@/components/ml-handbook/ModuleLLMFineTunin
 import { ModuleProductionMLOps } from '@/components/ml-handbook/ModuleProductionMLOps';
 import { ModuleLiveMentor } from '@/components/ml-handbook/ModuleLiveMentor';
 import { ModuleMlxMacLab } from '@/components/ml-handbook/ModuleMlxMacLab';
+import { ModuleAkiraMasterpiece } from '@/components/ml-handbook/ModuleAkiraMasterpiece';
 
 export default function HomePage() {
   const [mode, setMode] = useState<'wife' | 'architect'>('wife');
@@ -54,6 +55,7 @@ export default function HomePage() {
           {activeTab === 'production' && <ModuleProductionMLOps mode={mode} />}
           {activeTab === 'mentor' && <ModuleLiveMentor initialMode={mode} />}
           {activeTab === 'mlxmac' && <ModuleMlxMacLab mode={mode} />}
+          {activeTab === 'akira' && <ModuleAkiraMasterpiece mode={mode} />}
         </div>
       </main>
 

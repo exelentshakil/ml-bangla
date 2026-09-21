@@ -128,6 +128,7 @@ export function HandbookHero({
             { id: 'production', label: '৬. AWS, ডকার ও $5k Upwork গাইড' },
             { id: 'mentor', label: '৭. লাইভ বাংলা এআই টিউটর ল্যাব' },
             { id: 'mlxmac', label: '৮. Mac M1 এ mlx-lm ও জুপিটার ল্যাব' },
+            { id: 'akira', label: '৯. আকিরা নাকাই RWB ম্যানিফেস্টো' },
           ].map((tab) => (
             <button
               key={tab.id}

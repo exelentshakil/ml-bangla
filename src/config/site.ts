@@ -1,6 +1,6 @@
 /**
  * ML Bangla - মেশিন লার্নিং ও এআই মাস্টার হ্যান্ডবুক
- * Study Mart 68 Videos Decoded + Deep Learning & MLOps Blueprint
+ * Study Mart 68 Videos Decoded + Akira Nakai (RWB) Masterpiece Blueprint
  */
 
 export interface NavItem {
@@ -18,17 +18,6 @@ export interface MetricItem {
   badge: string;
 }
 
-export interface TableRow {
-  id: string;
-  entityName: string;
-  category: string;
-  status: 'active' | 'verified' | 'queued' | 'flagged';
-  latency: string;
-  provider: string;
-  updatedAt: string;
-  payload: Record<string, unknown>;
-}
-
 export interface SiteConfig {
   slug: string;
   name: string;
@@ -43,9 +32,9 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   slug: 'ml-bangla',
   name: 'ML Bangla',
-  badge: '৬৮+ ভিডিও ডিকোডেড',
+  badge: 'RWB Masterpiece Edition',
   tagline: 'বাংলায় মেশিন লার্নিং ও এআই মাস্টার হ্যান্ডবুক',
-  description: 'স্টাডি মার্টের ৬৮টি ভিডিও ও ডিপ লার্নিং প্লেলিস্টের ১০০% খাঁটি নির্যাস। কোনো ফর্মুলা মুখস্থ ছাড়া ঘরোয়া বাস্তব গল্প এবং আপওয়ার্কে $৫,০০০+ এআই অটোমেশন আর্কিটেক্ট হওয়ার প্র্যাকটিক্যাল রোডম্যাপ।',
+  description: 'পোর্শে তৈরির ফ্যাক্টরি না হয়ে আকিরা নাকাইয়ের মতো ১-অব-১ কাস্টম মাস্টারপিস বানানোর শিল্প। স্টাডি মার্টের ৬৮টি ভিডিও, ডিপ লার্নিং ও mlx-lm এর ১০০% খাঁটি নির্যাস।',
   archetype: 'stripe',
   primaryNav: [
     { id: 'fundamentals', label: '১. ফান্ডামেন্টালস' },
@@ -56,6 +45,7 @@ export const siteConfig: SiteConfig = {
     { id: 'production', label: '৬. AWS ও MLOps' },
     { id: 'mentor', label: '৭. লাইভ AI মেন্টর' },
     { id: 'mlxmac', label: '৮. Mac M1 এ mlx-lm ল্যাব' },
+    { id: 'akira', label: '৯. আকিরা নাকাই RWB ম্যানিফেস্টো' },
   ],
   metrics: [
     {
