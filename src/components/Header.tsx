@@ -7,8 +7,6 @@ import {
   Moon,
   Heart,
   Briefcase,
-  Sparkles,
-  BookOpen,
 } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { BrandLogoMark } from '@/components/BrandLogo';
@@ -47,15 +45,15 @@ export function Header({
         
         {/* Left: Brand Mark */}
         <div
-          onClick={() => onSelectTab('fundamentals')}
+          onClick={() => onSelectTab('cookbook')}
           role="button"
           tabIndex={0}
-          onKeyDown={(e) => e.key === 'Enter' && onSelectTab('fundamentals')}
-          className="flex items-center gap-2.5 shrink-0 cursor-pointer select-none"
+          onKeyDown={(e) => e.key === 'Enter' && onSelectTab('cookbook')}
+          className="flex items-center gap-2 shrink-0 cursor-pointer select-none"
         >
-          <BrandLogoMark className="h-7 w-7" />
-          <div className="flex items-center gap-2">
-            <span className="text-[15px] font-bold tracking-tight text-[var(--color-text-primary)] font-sans">
+          <BrandLogoMark className="h-6 w-6 sm:h-7 sm:w-7 text-[#533AFD]" />
+          <div className="flex items-center gap-1.5">
+            <span className="text-sm sm:text-[15px] font-bold tracking-tight text-[var(--color-text-primary)] font-sans">
               {siteConfig.name}
             </span>
             <span className="hidden sm:inline-block rounded-full bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 text-[10px] font-mono font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-500/20">
@@ -64,15 +62,15 @@ export function Header({
           </div>
         </div>
 
-        {/* Center: Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-5 xl:gap-6">
+        {/* Center: Desktop Navigation Links (Short, Clean, Zero Breaking) */}
+        <nav className="hidden md:flex items-center gap-4 lg:gap-6">
           {siteConfig.primaryNav.map((item) => {
             const isActive = activeTab === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => onSelectTab(item.id)}
-                className={`text-[13.5px] tracking-tight transition-colors whitespace-nowrap cursor-pointer relative py-1 font-medium ${
+                className={`text-[13px] tracking-tight transition-colors whitespace-nowrap cursor-pointer relative py-1 font-medium ${
                   isActive
                     ? 'text-[var(--color-text-primary)] font-semibold'
                     : 'text-[#425466] dark:text-[#ADBDCC] hover:text-[var(--color-text-primary)]'
@@ -80,7 +78,7 @@ export function Header({
               >
                 <span>{item.label}</span>
                 {isActive && (
-                  <span className="absolute bottom-[-13px] left-0 right-0 h-[2px] bg-[#533AFD] dark:bg-[#7A68FF] rounded-full" />
+                  <span className="absolute bottom-[-15px] left-0 right-0 h-[2px] bg-[#533AFD] dark:bg-[#7A68FF] rounded-full" />
                 )}
               </button>
             );
@@ -88,18 +86,18 @@ export function Header({
         </nav>
 
         {/* Right: Mode Switcher & Theme */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {/* Wife Mode vs Architect Mode */}
           <div className="inline-flex rounded-lg border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-0.5 text-xs font-semibold">
             <button
               type="button"
               onClick={() => onToggleMode('wife')}
-              className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-md transition-all cursor-pointer ${
+              className={`flex items-center gap-1 px-2 py-1 rounded-md transition-all cursor-pointer ${
                 mode === 'wife'
                   ? 'bg-rose-500 text-white shadow-xs'
                   : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]'
               }`}
-              title="ঘরোয়া সহজ গল্প মোড"
+              title="ঘরোয়া সহজ রূপক"
             >
               <Heart className="h-3 w-3" />
               <span className="text-[11px] sm:text-xs">Wife</span>
@@ -107,15 +105,15 @@ export function Header({
             <button
               type="button"
               onClick={() => onToggleMode('architect')}
-              className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-md transition-all cursor-pointer ${
+              className={`flex items-center gap-1 px-2 py-1 rounded-md transition-all cursor-pointer ${
                 mode === 'architect'
                   ? 'bg-[#533AFD] text-white shadow-xs'
                   : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]'
               }`}
-              title="$5k Upwork Architect মোড"
+              title="সফটওয়্যার ইঞ্জিনিয়ার লেন্স"
             >
               <Briefcase className="h-3 w-3" />
-              <span className="text-[11px] sm:text-xs">Architect</span>
+              <span className="text-[11px] sm:text-xs">Engineer</span>
             </button>
           </div>
 
@@ -138,15 +136,15 @@ export function Header({
         </div>
       </div>
 
-      {/* Mobile Horizontal Sub-Navigation (<1024px) */}
-      <div className="lg:hidden border-t border-[var(--color-border)] bg-[var(--color-panel-subtle)] py-2 px-4 overflow-x-auto no-scrollbar flex items-center gap-4 flex-nowrap">
+      {/* Mobile Horizontal Sub-Navigation (<768px) */}
+      <div className="md:hidden border-t border-[var(--color-border)] bg-[var(--color-panel-subtle)] py-2 px-4 overflow-x-auto no-scrollbar flex items-center gap-4 flex-nowrap">
         {siteConfig.primaryNav.map((item) => {
           const isActive = activeTab === item.id;
           return (
             <button
               key={item.id}
               onClick={() => onSelectTab(item.id)}
-              className={`text-[13px] transition-all whitespace-nowrap shrink-0 cursor-pointer ${
+              className={`text-[12.5px] transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                 isActive
                   ? 'text-[#533AFD] dark:text-[#7A68FF] font-semibold'
                   : 'text-[var(--color-text-secondary)] font-medium'
