@@ -4,19 +4,16 @@ import React, { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { HandbookHero } from '@/components/ml-handbook/HandbookHero';
-import { ModuleFundamentals } from '@/components/ml-handbook/ModuleFundamentals';
-import { ModuleDataPrep } from '@/components/ml-handbook/ModuleDataPrep';
-import { ModuleClassicalML } from '@/components/ml-handbook/ModuleClassicalML';
-import { ModuleDeepLearning } from '@/components/ml-handbook/ModuleDeepLearning';
-import { ModuleLLMFineTuning } from '@/components/ml-handbook/ModuleLLMFineTuning';
-import { ModuleProductionMLOps } from '@/components/ml-handbook/ModuleProductionMLOps';
-import { ModuleLiveMentor } from '@/components/ml-handbook/ModuleLiveMentor';
-import { ModuleMlxMacLab } from '@/components/ml-handbook/ModuleMlxMacLab';
+import { ModuleManifestoStack } from '@/components/ml-handbook/ModuleManifestoStack';
+import { ModuleDualEngine } from '@/components/ml-handbook/ModuleDualEngine';
 import { ModuleAkiraMasterpiece } from '@/components/ml-handbook/ModuleAkiraMasterpiece';
+import { ModulePipelineCookbook } from '@/components/ml-handbook/ModulePipelineCookbook';
+import { ModuleUpworkSprint } from '@/components/ml-handbook/ModuleUpworkSprint';
+import { ModuleLiveMentor } from '@/components/ml-handbook/ModuleLiveMentor';
 
 export default function HomePage() {
   const [mode, setMode] = useState<'wife' | 'architect'>('wife');
-  const [activeTab, setActiveTab] = useState<string>('fundamentals');
+  const [activeTab, setActiveTab] = useState<string>('manifesto');
 
   return (
     <div className="min-h-screen flex flex-col bg-[var(--color-canvas)] text-[var(--color-text-primary)] antialiased selection:bg-[#533AFD]/15 selection:text-[#533AFD]">
@@ -25,7 +22,6 @@ export default function HomePage() {
         activeTab={activeTab}
         onSelectTab={(tab) => {
           setActiveTab(tab);
-          // Smooth scroll to content top if scrolled
           const contentArea = document.getElementById('handbook-content');
           if (contentArea && window.scrollY > 300) {
             contentArea.scrollIntoView({ behavior: 'smooth' });
@@ -47,15 +43,12 @@ export default function HomePage() {
 
         {/* Dynamic Tab Content Renderer */}
         <div id="handbook-content" className="scroll-mt-20">
-          {activeTab === 'fundamentals' && <ModuleFundamentals mode={mode} />}
-          {activeTab === 'dataprep' && <ModuleDataPrep mode={mode} />}
-          {activeTab === 'classical' && <ModuleClassicalML mode={mode} />}
-          {activeTab === 'deeplearning' && <ModuleDeepLearning mode={mode} />}
-          {activeTab === 'finetuning' && <ModuleLLMFineTuning mode={mode} />}
-          {activeTab === 'production' && <ModuleProductionMLOps mode={mode} />}
+          {activeTab === 'manifesto' && <ModuleManifestoStack mode={mode} />}
+          {activeTab === 'dualengine' && <ModuleDualEngine mode={mode} />}
+          {activeTab === 'masterpiece' && <ModuleAkiraMasterpiece mode={mode} />}
+          {activeTab === 'pipeline' && <ModulePipelineCookbook mode={mode} />}
+          {activeTab === 'upworksprint' && <ModuleUpworkSprint mode={mode} />}
           {activeTab === 'mentor' && <ModuleLiveMentor initialMode={mode} />}
-          {activeTab === 'mlxmac' && <ModuleMlxMacLab mode={mode} />}
-          {activeTab === 'akira' && <ModuleAkiraMasterpiece mode={mode} />}
         </div>
       </main>
 
