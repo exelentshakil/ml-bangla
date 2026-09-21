@@ -16,6 +16,7 @@ import {
   AlertTriangle,
   Cpu,
   Workflow,
+  Brain,
   Sparkles,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -166,6 +167,77 @@ Shak`;
               <span>ডেটা ক্লায়েন্টের ক্লাউড থেকে ইন্টারনেটে এক ইঞ্চিও বাইরে যায় না। ফিক্সড বাজেট।</span>
             </li>
           </ul>
+        </div>
+      </div>
+
+      {/* ML to Agent Convergence Card */}
+      <div className="p-5 sm:p-6 rounded-2xl border border-[#533AFD]/30 bg-[var(--color-surface)] shadow-xs space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[var(--color-border)] pb-3">
+          <div>
+            <div className="flex items-center gap-2">
+              <Badge className="bg-[#533AFD] text-white text-xs font-mono font-bold">
+                THE CONVERGENCE
+              </Badge>
+              <span className="text-xs font-mono text-[var(--color-text-secondary)]">
+                {mode === 'wife' ? 'মাথা ও হাতের মেলবন্ধন' : 'Brain (ML) + Hands (Agent)'}
+              </span>
+            </div>
+            <h3 className="text-base sm:text-lg font-bold text-[var(--color-text-primary)] mt-1">
+              {mode === 'wife'
+                ? '🌸 মেশিন লার্নিং আর এআই এজেন্টের সহজ পার্থক্য: মাথা বনাম হাত-পা'
+                : 'এমএল থেকে এআই এজেন্ট: কেন সিনিয়র ইঞ্জিনিয়ারদের জন্য এটি হাতের মোয়া?'}
+            </h3>
+          </div>
+          <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold">
+            Difficulty: 1 / 10
+          </span>
+        </div>
+
+        <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed">
+          {mode === 'wife' ? (
+            <span>
+              মেশিন লার্নিং হলো মানুষের <strong>মাথা বা বুদ্ধি</strong> (কোন তরকারিতে কতটুকু লবণ লাগবে তা জানা)। আর এআই এজেন্ট হলো মানুষের <strong>হাত-পা</strong> (বাজারে গিয়ে কেনা, বাটনা বাটা, চুলায় আগুন দেওয়া এবং মেহমানকে প্লেট সাজিয়ে দেওয়া)। দুটো একসাথে হলেই চমৎকার রান্না সম্পূর্ণ হয়!
+            </span>
+          ) : (
+            <span>
+              অনেকে ভাবে এজেন্ট ডেভেলপমেন্ট কঠিন কিছু। আসল সত্যি হলো: <strong>মেশিন লার্নিং হলো ডিসিশন ব্রেইন, আর এজেন্ট ডেভেলপমেন্ট হলো ১০০% খাঁটি সিনিয়র সফটওয়্যার ইঞ্জিনিয়ারিং!</strong> স্টেট মেশিন, ইভেন্ট কিউ (Inngest), এপিআই ইন্টিগ্রেশন ও ডেটাবেস ট্রানজ্যাকশন, যা তুমি ১২ বছর ধরে করছো।
+            </span>
+          )}
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+          {/* Brain Card */}
+          <div className="p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-panel-subtle)] space-y-2">
+            <div className="flex items-center gap-2 text-sm font-bold text-[#533AFD] dark:text-[#7A68FF]">
+              <Brain className="h-4 w-4" />
+              <span>১. ব্রেইন / বুদ্ধিমত্তা (Machine Learning Core)</span>
+            </div>
+            <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed">
+              <strong>কী করে:</strong> কাস্টমারের অগোছালো কথার আসল উদ্দেশ্য বোঝা, কনফিডেনশিয়াল ডেটা প্রটেক্ট করা, এবং রুলস যাচাই করা।
+            </p>
+            <div className="text-[11px] font-mono text-[var(--color-text-muted)] bg-[var(--color-surface)] p-2 rounded border border-[var(--color-border)]">
+              স্ট্যাক: ৪-বিট LoRA অ্যাডাপ্টার (Llama-3), ভেক্টর এম্বেডিংস, এবং টেবুলার ডিসিশনে ০.১ms XGBoost ($০ খরচ)।
+            </div>
+          </div>
+
+          {/* Hands Card */}
+          <div className="p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-panel-subtle)] space-y-2">
+            <div className="flex items-center gap-2 text-sm font-bold text-emerald-600 dark:text-emerald-400">
+              <Workflow className="h-4 w-4" />
+              <span>২. হাত-পা / অ্যাকশন (Autonomous Agent Stack)</span>
+            </div>
+            <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed">
+              <strong>কী করে:</strong> ব্রেইনের সিদ্ধান্ত নিয়ে সরাসরি Stripe পেমেন্ট নেওয়া, CRM আপডেট করা, এবং ইনভয়েস পাঠানো।
+            </p>
+            <div className="text-[11px] font-mono text-[var(--color-text-muted)] bg-[var(--color-surface)] p-2 rounded border border-[var(--color-border)]">
+              স্ট্যাক: Inngest Event Queues (অটো-রিট্রাই), Function Calling, PostgreSQL State Machine, এবং Zod Validation।
+            </div>
+          </div>
+        </div>
+
+        {/* Why Shakil Wins */}
+        <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-800 dark:text-emerald-300 font-medium">
+          🚀 <strong>আপওয়ার্কে কেন তুমি অপ্রতিদ্বন্দ্বী:</strong> সাধারণ ফ্রিল্যান্সাররা ওপেনএআই দিয়ে ভঙ্গুর বট বানিয়ে ক্লায়েন্টের ডেটা লিক করে। তুমি ক্লায়েন্টকে অফার করো প্রাইভেট ৪-বিট সুরক্ষিত ব্রেইন এবং ১২ বছরের সিনিয়র ব্যাকএন্ড দিয়ে নির্মিত ১০০% ক্র্যাশ-প্রুফ ইনজেস্ট এজেন্ট!
         </div>
       </div>
 
