@@ -99,6 +99,19 @@ Shak`;
         </div>
       </div>
 
+      {/* Wife Mode Explanatory Card */}
+      {mode === 'wife' && (
+        <div className="p-4 sm:p-5 rounded-xl border border-rose-400/30 bg-rose-50/20 dark:bg-rose-950/20 space-y-2">
+          <div className="flex items-center gap-2 text-rose-700 dark:text-rose-300 font-bold text-sm">
+            <span>🌸 কেন ক্লায়েন্টরা সস্তা ফ্রিল্যান্সারদের বাদ দিয়ে শাকিলকে $৫,০০০ দেয়?</span>
+          </div>
+          <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed">
+            সস্তা ফ্রিল্যান্সাররা হলো এমন রাঁধুনি যে রান্না করার জন্য মেহমানের বাড়ির গোপন ডায়রি আর খরচের খাতা বাইরের প্রতিবেশীর বাড়িতে পাঠিয়ে দেয়। কোনো বুদ্ধিমান বাড়িওয়ালাই তাকে রান্নাঘরে ঢুকতে দেবে না! 
+            আর শাকিল হলো সেই বুদ্ধিমান রাঁধুনি যে নিজের গোপন মসলার ছোট কৌটো (৪-বিট কন্টেইনার) নিয়ে এসে বাড়ির ভেতর সদর দরজায় তালা দিয়ে রান্না করে। বাড়ির এক টুকরো খবরও বাইরে যায় না। তাই ক্লায়েন্টরা নিশ্চিন্তে বলে: &quot;Take my money!&quot;
+          </p>
+        </div>
+      )}
+
       {/* Side-by-Side Comparison: Cheap Wrapper vs Shakil Enterprise */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* The Cheap API Wrapper Trap */}
